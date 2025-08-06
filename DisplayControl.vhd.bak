@@ -1,0 +1,52 @@
+library IEEE;
+Use IEEE.std_logic_1164.all;
+Use IEEE.numeric_std.all;
+
+entity DisplayControl is
+port( switches : in bit_vector(3 downto 0);
+		keys : in bit_vector (3 downto 0);
+		disp0 : out bit_vector (7 downto 0);
+		disp1 : out bit_vector (7 downto 0);
+		disp2 : out bit_vector (7 downto 0);
+		disp3 : out bit_vector (7 downto 0)
+);
+end DisplayControl;
+
+architecture logic of DisplayCOntrol is
+begin
+	process (switches, keys, disp0, disp1, disp2, disp3)
+	variable cont : integer :=0;
+	begin
+		if keys[1] = 1 then
+			cont := cont + 1;
+			if cont := 10 then
+				cont := 0
+		if keys[2] = 1 & cont >=0 then
+			cont := cont - 1;
+		
+		when switches[0] = 1 
+		
+			case cont is
+				
+				when 0 =>
+					disp0 <= '0000001'
+				when 1 =>
+					disp0 <= '0110000'
+				when 2 =>
+					disp0 <= '1101101'	
+				when 3 =>
+					disp0 <= '1111001'
+				when 4 =>
+					disp0 <= '0110011'
+				when 5 =>
+					disp0 <= '1011011'
+				when 6 =>
+					disp0 <= '1011111'
+				when 7 =>
+					disp0 <= '1110000'
+				when 8 =>
+					disp0 <= '1111111'	
+				when 9 =>
+					disp0 <= '1111011'
+
+			
